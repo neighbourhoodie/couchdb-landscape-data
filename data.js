@@ -3,39 +3,81 @@ import { LandscapeSchema } from '@localfirstfm/landscape-schema'
 
 export const data = LandscapeSchema.make({
 	Version: 1,
-	Id: 'supersync',
-	Name: 'SuperSync',
-	Description: 'A cool way to sync data',
-	Website: 'https://supersync.cool',
+	Id: 'couchdb',
+	Name: 'CouchDB',
+	Description: 'TODO',
+	Website: 'https://couchdb.apache.org',
 	Deployment: ['Self-hosted'],
-	License: 'MIT',
+	License: 'Apache-2.0',
+	MaturityLevel: 'Production-Ready',
+	InitialReleaseDate: new Date('Wed Jul 14 2010 00:00:00 GMT+0100 (Central European Standard Time)'), 
 	AppTarget: {
-		LanguageSDK: { data: ['typescript'] },
+		Platform: { data: ['Linux', 'macOS', 'Windows', 'Unix'] },
+		FrameworkIntegrations: { 
+			data: [''],
+			comment: 'None directly; all via PouchDB.',
+		},
+		LanguageSDK: { data: ['HTTP', 'JSON'] },
+		// ClientBundleSize: { data: '46KB', comment: '46KB zipped'}
 	},
+	
 	Networking: {
-		Topology: { data: 'Client-Server' },
+		Topology: { 
+			data: 'P2P / Client-server / Mesh Network / Relay Server',
+			// comment: ''
+		},
+		Protocol: {
+			data: ['HTTP']
+		}
 	},
 	ServerSideData: {
-		PersistenceMechanism: { data: ['N/A'] },
-		DataModelParadigm: { data: 'Relational' },
-	},
-	ClientSideData: {
-		QueryAPI: { data: ['Async'] },
-		PersistenceMechanism: { data: ['IndexedDB', 'OPFS'] },
-		PersistenceFeatures: { data: 'Indexes' },
-		DataModel: { data: 'Document' },
-		OfflineReads: { data: 'Full Support' },
-		OfflineWrites: { data: 'Local conflict resolution' },
-		DataSize: { data: 'Up to 5-10 MB per document' },
+		PersistenceMechanism: { 
+			data: ['Custom'],
+			// comment: ''
+		},
+		DataModelParadigm: { data: 'Document' },
+		DataSize: { data: 'Unlimited' },
+		SchemaManagement: { data: ['Schema definition', 'Schema validation'],
+			comment: 'Definition and validation optional.'
+		}
 	},
 	SynchronizationStrategy: {
-		FullOrPartialReplication: { data: ['Full Replication'] },
-		ConflictHandling: { data: 'Automatic via CRDT' },
-		WhereResolutionOccurs: { data: 'Client' },
+		FullOrPartialReplication: { 
+			data: ['Full Replication', 'Partial Replication'],
+			comment: 'Full Replication & Various Partial Replication Strategies'
+		},
+		ConflictHandling: { data: 'Flexible/Custom' },
+		WhereResolutionOccurs: { data: 'Client and/or Server' },
 		WhatGetsSynced: {
 			data: {
-				ClientToClient: 'Ops',
+				ServerToClient: 'Full document revisions',
+				ClientToServer: 'Full document revisions'
 			},
+			comment: 'Efficient sync-list delta computation and efficient avoidance of redundant document sync.'
 		},
+		Authority: { 
+			data: 'Default centralized, decentralized possible',
+		},
+		Latency: { 
+			data: '~1–10ms',
+			comment: 'Customisable for low-bandwidth and/or high-latency networks'
+		},
+		Concurrency: { data: 'Effectively unlimited' }
 	},
+	AuthIdentity: {
+		Encryption: {
+			data: 'Transport-level encryption',
+		},
+		AuthenticationMethod: {
+			data: ['Built-in', 'JWT Tokens', 'Basic Auth', 'Proxy Auth']
+		},
+		AuthorizationPermissions: {
+			data: 'RBAC'
+		}
+	},
+	DevelopmentWorkflowsDX: {
+		TypeSupport: { data: 'Full type support'},
+		DebuggingTools: { data: ['Data Inspector', 'Network Inspector']},
+		CLI: { data: 'Standard tooling like curl & jq suffices' }
+	}
 })
