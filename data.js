@@ -5,7 +5,7 @@ export const data = LandscapeSchema.make({
 	Version: 1,
 	Id: 'couchdb',
 	Name: 'CouchDB',
-	Description: 'Seamless multi-primary sync that scales from Big Data to Mobile, with an Intuitive HTTP/JSON API and designed for Reliability.',
+	Description: 'The database that perfected Offline-First. Multi-primary sync, designed for reliability.',
 	Website: 'https://couchdb.apache.org',
 	Deployment: ['Self-hosted'],
 	License: 'Apache-2.0',
